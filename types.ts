@@ -26,6 +26,7 @@ export interface Review {
   hasExam: boolean;
   isAttendanceMandatory: boolean;
   rating: number; // 1 to 5
+  experience: string; // User's written experience
 }
 
 export interface Course {

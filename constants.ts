@@ -17,11 +17,13 @@ export const MOCK_CLUBS = [
   { name: "Coding Community", description: "Collaborate on coding projects, learn new technologies, and participate in hackathons." },
   { name: "The Forum", description: "Engage in debates and discussions about current events and philosophical topics." },
   { name: "Art and Architecture Club", description: "Explore creative expression through various mediums and learn about architectural design." },
-  { name: "Outdoor Club", description: "Participate in hiking, climbing, and other outdoor adventures in the Lehigh Valley." },
+  { name: "Outing Club", description: "Participate in hiking, climbing, and other outdoor adventures in the Lehigh Valley." },
   { name: "Lehigh University Dance Team", description: "Perform at university events and compete in various dance styles." },
   { name: "Mock Trial Association", description: "Simulate court proceedings and compete against other universities." },
   { name: "The Brown and White", description: "Join Lehigh's student newspaper as a writer, editor, or photographer." },
-  { name: "Lehigh After Dark", description: "Plan and host late-night events and activities for students on campus." }
+  { name: "Lehigh After Dark", description: "Plan and host late-night events and activities for students on campus." },
+  { name: "Modeling Club", description: "Where you can learn about the history of modeling and participate in photoshoots. You also can be apart of the Spring fashion show in the Spring!"},
+  { name: "AI Club", description: "Want to learn more about AI and it's uses? Come to AI club where you can learn all about how to use Artifiical Intelligence!"}
 ];
 
 export const RATING_QUOTES: { [key: number]: string } = {

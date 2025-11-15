@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import type { User } from './types';
 import { AppView } from './types';
@@ -9,23 +8,25 @@ import { LEHIGH_COLORS } from './constants';
 
 const Header: React.FC<{ onLogout: () => void; onNavigate: (view: AppView) => void; currentView: AppView; }> = ({ onLogout, onNavigate, currentView }) => {
   return (
-    <header className="sticky top-0 z-40 w-full shadow-md backdrop-blur-md" style={{backgroundColor: `${LEHIGH_COLORS.white}E6`}}>
+    <header className="sticky top-0 z-40 w-full shadow-md backdrop-blur-lg" style={{backgroundColor: `rgba(253, 251, 247, 0.85)`}}>
       <div className="container flex items-center justify-between h-16 px-4 mx-auto">
         <h1 className="text-xl font-bold cursor-pointer" style={{color: LEHIGH_COLORS.brown}} onClick={() => onNavigate(AppView.DASHBOARD)}>Lehigh Linc-Up</h1>
         <nav className="flex items-center gap-4">
+            {/* FIX: Removed non-standard 'css' prop which caused a TypeScript error. Replaced with Tailwind CSS class for styling the pseudo-element. */}
             <button 
                 onClick={() => onNavigate(AppView.DASHBOARD)} 
-                className={`font-semibold ${currentView === AppView.DASHBOARD ? `border-b-2` : ''}`}
-                style={{borderColor: LEHIGH_COLORS.brown, color: LEHIGH_COLORS.brown}}>
+                className={`font-semibold transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 after:bg-[var(--after-bg-color)] ${currentView === AppView.DASHBOARD ? 'after:scale-x-100' : ''}`}
+                style={{color: LEHIGH_COLORS.brown, '--after-bg-color': LEHIGH_COLORS.brown} as React.CSSProperties}>
                 Dashboard
             </button>
+            {/* FIX: Removed non-standard 'css' prop which caused a TypeScript error. Replaced with Tailwind CSS class for styling the pseudo-element. */}
             <button 
                 onClick={() => onNavigate(AppView.COURSE_CATALOG)} 
-                className={`font-semibold ${currentView === AppView.COURSE_CATALOG ? `border-b-2` : ''}`}
-                style={{borderColor: LEHIGH_COLORS.brown, color: LEHIGH_COLORS.brown}}>
+                 className={`font-semibold transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 after:bg-[var(--after-bg-color)] ${currentView === AppView.COURSE_CATALOG ? 'after:scale-x-100' : ''}`}
+                style={{color: LEHIGH_COLORS.brown, '--after-bg-color': LEHIGH_COLORS.brown} as React.CSSProperties}>
                 Courses
             </button>
-            <button onClick={onLogout} className="px-4 py-2 text-sm text-white rounded-md" style={{backgroundColor: LEHIGH_COLORS.lightBrown}}>Logout</button>
+            <button onClick={onLogout} className="px-4 py-2 text-sm text-white transition-opacity rounded-md hover:opacity-90" style={{backgroundColor: LEHIGH_COLORS.lightBrown}}>Logout</button>
         </nav>
       </div>
     </header>
@@ -61,6 +62,7 @@ const App: React.FC = () => {
   
   const handleLogout = () => {
     setCurrentUser(null);
+    setCurrentView(AppView.DASHBOARD);
     localStorage.removeItem('currentUser');
   };
 
@@ -92,7 +94,7 @@ const App: React.FC = () => {
     }
 
     return (
-      <div className="min-h-screen" style={{backgroundColor: LEHIGH_COLORS.offWhite}}>
+      <div>
         <Header onLogout={handleLogout} onNavigate={setCurrentView} currentView={currentView}/>
         <main>
           {content}
